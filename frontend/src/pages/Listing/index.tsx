@@ -28,11 +28,15 @@ function Listing() {
                 const data = response.data as MoviePage;
                 setPage(data)
             });
-    }, [pageNumber]);
+    }, [pageNumber]); //useEffect will run this code (first parameter) each time the pageNumber (second parameter) changes
+
+    const handlePageChange = (newPageNumber : number) => {
+        setPageNumber(newPageNumber);
+    }
 
     return (
         <>
-            <Pagination />
+            <Pagination page={page} onChange={handlePageChange}/>
 
             <div className="container">
                 <div className="row">
